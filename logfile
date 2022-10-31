@@ -1,0 +1,21 @@
+2022-10-31 11:13:26.760 WIB [8690] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.3.0, 64-bit
+2022-10-31 11:13:26.761 WIB [8690] LOG:  listening on IPv6 address "::1", port 5432
+2022-10-31 11:13:26.761 WIB [8690] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-10-31 11:13:26.762 WIB [8690] FATAL:  could not create lock file "/run/postgresql/.s.PGSQL.5432.lock": No such file or directory
+2022-10-31 11:13:26.764 WIB [8690] LOG:  database system is shut down
+2022-10-31 11:14:10.772 WIB [8733] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.3.0, 64-bit
+2022-10-31 11:14:10.772 WIB [8733] LOG:  listening on IPv6 address "::1", port 5432
+2022-10-31 11:14:10.772 WIB [8733] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-10-31 11:14:10.774 WIB [8733] FATAL:  could not create lock file "/run/postgresql/.s.PGSQL.5432.lock": No such file or directory
+2022-10-31 11:14:10.777 WIB [8733] LOG:  database system is shut down
+2022-10-31 11:19:10.194 WIB [9125] LOG:  starting PostgreSQL 14.5 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.3.0, 64-bit
+2022-10-31 11:19:10.195 WIB [9125] LOG:  listening on IPv6 address "::1", port 5432
+2022-10-31 11:19:10.195 WIB [9125] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-10-31 11:19:10.198 WIB [9125] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-10-31 11:19:10.202 WIB [9128] LOG:  database system was shut down at 2022-10-31 11:10:46 WIB
+2022-10-31 11:19:10.206 WIB [9125] LOG:  database system is ready to accept connections
+2022-10-31 11:26:13.121 WIB [9125] LOG:  received fast shutdown request
+2022-10-31 11:26:13.131 WIB [9125] LOG:  aborting any active transactions
+2022-10-31 11:26:13.134 WIB [9125] LOG:  background worker "logical replication launcher" (PID 9134) exited with exit code 1
+2022-10-31 11:26:13.135 WIB [9129] LOG:  shutting down
+2022-10-31 11:26:13.156 WIB [9125] LOG:  database system is shut down
