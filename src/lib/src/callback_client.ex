@@ -1,4 +1,4 @@
-defmodule CallbackClient do
+defmodule Src.CallbackClient do
   use HTTPoison.Base
 
   def send_callback(url, body) do
