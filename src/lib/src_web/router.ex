@@ -21,9 +21,11 @@ defmodule SrcWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SrcWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", SrcWeb do
+    pipe_through :api
+
+    resources "/consumers", ConsumerController, except: [:new, :edit]
+  end
 
   # Enables LiveDashboard only for development
   #
