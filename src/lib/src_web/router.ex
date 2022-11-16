@@ -25,6 +25,7 @@ defmodule SrcWeb.Router do
     pipe_through :api
 
     resources "/consumers", ConsumerController, except: [:new, :edit]
+    get "/consumers/topic/:topic", ConsumerController, :index_by_topic
   end
 
   # Enables LiveDashboard only for development
