@@ -108,4 +108,5 @@ defmodule Src.Queue do
     Repo.all(from c in Consumer, where: c.topic == ^topic, order_by: [desc: c.inserted_at])
   end
 
+
 end
