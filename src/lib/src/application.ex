@@ -15,9 +15,10 @@ defmodule Src.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Src.PubSub},
       # Start the Endpoint (http/https)
-      SrcWeb.Endpoint
+      SrcWeb.Endpoint,
       # Start a worker by calling: Src.Worker.start_link(arg)
       # {Src.Worker, arg}
+      Src.Sender
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
