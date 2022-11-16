@@ -40,4 +40,9 @@ defmodule SrcWeb.ConsumerController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def index_by_topic(conn, %{"topic" => topic}) do
+    consumers = Queue.filter_consumer_by_topic(topic)
+    render(conn, "index.json", consumers: consumers)
+  end
 end
