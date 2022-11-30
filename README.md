@@ -1,3 +1,8 @@
+<h2>Other Repository</h2>
+
+[Consumer Example](https://github.com/IoriU/consumer-example)
+
+<h2>Init Project Guide</h2>
 Initializing the project will require the following steps:
 
 - enter nix shell using `nix-shell shell.nix`
