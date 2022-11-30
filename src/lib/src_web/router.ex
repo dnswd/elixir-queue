@@ -26,6 +26,7 @@ defmodule SrcWeb.Router do
 
     resources "/consumers", ConsumerController, except: [:new, :edit]
     get "/consumers/topic/:topic", ConsumerController, :index_by_topic
+    post "/message_queue", MessageQueueController, :receive_message
   end
 
   # Enables LiveDashboard only for development
