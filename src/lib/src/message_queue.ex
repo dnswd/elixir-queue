@@ -10,16 +10,17 @@ defmodule Src.MessageQueue do
   end
 
   def add_message(message, topic) do
-    GenServer.call(topic, {:add_message, message}, :infinity)
+    GenServer.call(topic, {:add_message, topic, message}, :infinity)
   end
 
-  def handle_call({:add_message, message}, _from, state) do
+  def handle_call({:add_message, topic, message}, _from, state) do
     # add message to queue
     state = [message | state]
     # wait for previous job to finish
     Process.sleep(5000)
     # do a job
     IO.puts("Message: #{message}")
+    Enum.each(Src.Queue.filter_consumer_by_topic("#{topic}"), fn x -> Src.CallbackClient.send_callback(x.url_callback, message) end)
     {:reply, :ok, state}
   end
 end
