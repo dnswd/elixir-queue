@@ -101,4 +101,12 @@ defmodule Src.Queue do
   def change_consumer(%Consumer{} = consumer, attrs \\ %{}) do
     Consumer.changeset(consumer, attrs)
   end
+
+  # filter conusmer by topic and  order by time created
+  def filter_consumer_by_topic(topic) do
+    # topic is string
+    Repo.all(from c in Consumer, where: c.topic == ^topic, order_by: [desc: c.inserted_at])
+  end
+
+
 end
