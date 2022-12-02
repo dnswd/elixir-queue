@@ -1,0 +1,13 @@
+# nixpacks.toml
+
+providers = ['elixir']
+
+[phases.setup]
+nixPkgs = ['...', 'nodejs', 'yarn', 'python', 'postgresql']
+
+[phases.install]
+dependsOn = ['setup']
+cmds = ['nix-shell shell.nix', 'initdb ./db', 'pg_ctl -o "-k /tmp" -l "$PGDATA/server.log" start', 'createuser -h /tmp postgres -ds', 'createdb -h /tmp db', 'cd src && mix deps.get', 'cd src && mix ecto.setup']
+
+[phases.build]
+cmd = 'cd sec && mix phx.server'
