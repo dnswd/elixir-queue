@@ -16,11 +16,9 @@ defmodule Src.MessageQueue do
   def handle_call({:add_message, topic, message}, _from, state) do
     # add message to queue
     state = [message | state]
-    # wait for previous job to finish
-    Process.sleep(5000)
     # do a job
-    IO.puts("Message: #{message}")
     Enum.each(Src.Queue.filter_consumer_by_topic("#{topic}"), fn x -> Src.CallbackClient.send_callback(x.url_callback, message) end)
+    IO.puts("Message: #{message}")
     {:reply, :ok, state}
   end
 end
