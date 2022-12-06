@@ -17,7 +17,7 @@ defmodule Src.MessageQueue do
     # add message to queue
     state = [message | state]
     # do a job
-    Enum.each(Src.Queue.filter_consumer_by_topic("#{topic}"), fn x -> Src.CallbackClient.send_callback(x.url_callback, message) end)
+    Enum.each(Src.Queue.filter_consumer_by_topic("#{topic}"), fn x -> Src.CallbackClient.send_callback(x.url_callback, %{topic: topic, message: message}) end)
     IO.puts("Message: #{message}")
     {:reply, :ok, state}
   end
