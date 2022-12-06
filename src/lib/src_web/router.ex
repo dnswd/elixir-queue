@@ -12,7 +12,7 @@ defmodule SrcWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug CORSPlug, origin: [~r/*/]
+    plug CORSPlug, origin: ["https://elixir-queue-production.up.railway.app", "https://consumer-example-production.up.railway.app", "http://127.0.0.1"]
   end
 
   scope "/", SrcWeb do
