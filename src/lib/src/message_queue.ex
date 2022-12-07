@@ -16,9 +16,13 @@ defmodule Src.MessageQueue do
   def handle_call({:add_message, topic, message}, _from, state) do
     # add message to queue
     state = [message | state]
-    # do a job
-    Enum.each(Src.Queue.filter_consumer_by_topic("#{topic}"), fn x -> Src.CallbackClient.send_callback(x.url_callback, %{topic: topic, message: message}) end)
+    # insert to sender scheduler
+    Enum.each(
+      Src.Queue.filter_consumer_by_topic("#{topic}"),
+      fn x -> GenServer.call(Src.PublishScheduler, {:store, %{url: x.url_callback, body: message, retries: 0}}) end
+    )
     IO.puts("Message: #{message}")
     {:reply, :ok, state}
   end
+
 end

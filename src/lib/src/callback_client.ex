@@ -3,19 +3,21 @@ defmodule Src.CallbackClient do
 
   def send_callback(url, body) do
     headers = [{"Content-type", "application/json"}]
+    response =  post(url, Poison.encode!(body), headers, [])
 
-    case post(url, Poison.encode!(body), headers, []) do
+    case response do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         IO.puts(body)
+        {:success}
 
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
-        IO.puts("Not found")
+      {:ok, %HTTPoison.Response{}} ->
+        IO.puts("Request Failed")
+        {:do_not_retry}
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         IO.inspect(reason)
-
-      {:ok, %HTTPoison.Response{status_code: 500}} ->
-        IO.puts("Consumer`s callback server is down")
+        IO.puts("to be scheduled to retry")
+        {:do_retry}
     end
   end
 end
