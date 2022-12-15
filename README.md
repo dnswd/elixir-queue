@@ -5,6 +5,18 @@ This project implements simple message queue using HTTP Protocol. Due to HTTP's 
 
 Please refer to [Consumer Example](https://github.com/IoriU/consumer-example).
 
+## Endpoints
+
+|            **Path**           |                                       **Payload**               |       **Description**      |
+|:-----------------------------:|:---------------------------------------------------------------:|:--------------------------:|
+| **POST** `/api/message_queue` | `{ "topic" : "haskell" , "message" : "haskell is functional" }` | Send a message to a topic. |
+| **POST** `/api/consumer`      | `{ "topic" : "haskell" , "url_callback" : "example.com/api"  }` | Subscribe to a topic.      |
+
+## Pages
+
+- List of consumers `/api/consumers`
+- List consumers by topic `/api/consumers/topic/<topic>`
+
 ## Development Guide
 
 The project use [Nix Package Manager](https://nixos.org/) to make reproducible development environment. If you're new to Nix, please follow [this](https://nixos.org/download.html) guide to install Nix Package manager into your system. 
