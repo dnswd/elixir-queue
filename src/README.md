@@ -1,4 +1,4 @@
-# Src
+# ElixirMQ Phoenix Server
 
 To start your Phoenix server:
 
